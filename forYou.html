@@ -111,7 +111,7 @@ p {
 
 @keyframes fall {
     to {
-        transform: translateY(120%) rotate(360deg);
+        transform: translateY(12000%) rotate(360deg);
     }
 }
 
@@ -119,10 +119,16 @@ p {
     position: fixed;
     bottom: 25px;
     font-size: 22px;
-    opacity: 0.8;
-    z-index: 5;
+    opacity: 0;
 
-    animation: walkX linear infinite;
+    animation: walkX linear infinite, fadePaw 6s linear infinite;
+}
+
+@keyframes fadePaw {
+    0% { opacity: 0; }
+    10% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { opacity: 0; }
 }
 
 /* Single animation (no conflict) */
@@ -199,6 +205,15 @@ p {
 
     text-align: center;
     line-height: 1.6;
+
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.popup.show .popup-content {
+    transform: scale(1);
+    opacity: 1;
 }
 
 .close {
@@ -206,6 +221,45 @@ p {
     right: 20px;
     top: 10px;
     font-size: 22px;
+    cursor: pointer;
+}
+
+.sparkle {
+    position: fixed;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 50;
+
+    animation: sparkleFall 1s ease-out forwards;
+}
+
+@keyframes sparkleFall {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.balloon {
+    position: fixed;
+    bottom: -50px;
+    font-size: 30px;
+    animation: floatUp 6s linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+.cat {
+    font-size: clamp(60px, 15vw, 90px);
+    margin-top: 15px;
+    animation: float 2s ease-in-out infinite;
     cursor: pointer;
 }
 </style>
@@ -276,16 +330,27 @@ function startTyping() {
     type();
 }
 
-/* Popup */
 function showMessage() {
-    document.getElementById("popup").style.display = "flex";
+    const popup = document.getElementById("popup");
+    popup.style.display = "flex";
+
+    setTimeout(() => popup.classList.add("show"), 10);
+
     document.getElementById("msgCTA").style.display = "none";
 }
 
 function closeMessage() {
-    document.getElementById("popup").style.display = "none";
+    const popup = document.getElementById("popup");
+
+    popup.classList.remove("show");
+
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 300);
+
     document.getElementById("msgCTA").style.display = "block";
 }
+
 
 /* Confetti */
 for (let i = 0; i < 80; i++) {
@@ -310,6 +375,81 @@ for (let i = 0; i < 5; i++) {
 
     document.body.appendChild(paw);
 }
+
+document.addEventListener("click", (e) => {
+    for (let i = 0; i < 8; i++) {
+        let s = document.createElement("div");
+        s.className = "sparkle";
+        s.innerHTML = "✨";
+
+        s.style.left = e.clientX + "px";
+        s.style.top = e.clientY + "px";
+
+        // random spread + downward fall
+        const x = (Math.random() - 0.5) * 100;  // left/right
+        const y = Math.random() * 120 + 40;     // downward
+
+        s.style.setProperty("--x", x + "px");
+        s.style.setProperty("--y", y + "px");
+
+        document.body.appendChild(s);
+
+        setTimeout(() => s.remove(), 1000);
+    }
+});
+// 🎈 Balloons
+for (let i = 0; i < 10; i++) {
+    let b = document.createElement("div");
+    b.className = "balloon";
+    b.innerHTML = ["🎈","🎉","💖","✨"][Math.floor(Math.random()*4)];
+
+    b.style.left = Math.random() * 100 + "%";
+    b.style.animationDelay = i * 0.3 + "s";
+
+    document.body.appendChild(b);
+
+    setTimeout(() => b.remove(), 6000);
+}
+
+let lastTap = 0;
+
+document.addEventListener("touchstart", (e) => {
+    const now = new Date().getTime();
+
+    if (now - lastTap < 300) {
+        for (let i = 0; i < 10; i++) {
+            let h = document.createElement("div");
+            h.className = "sparkle";
+            h.innerHTML = "💖";
+
+            h.style.left = e.touches[0].clientX + "px";
+            h.style.top = e.touches[0].clientY + "px";
+
+            const x = (Math.random() - 0.5) * 120;
+            const y = Math.random() * 150 + 50;
+
+            h.style.setProperty("--x", x + "px");
+            h.style.setProperty("--y", y + "px");
+
+            document.body.appendChild(h);
+
+            setTimeout(() => h.remove(), 1000);
+        }
+    }
+
+    lastTap = now;
+});
+
+document.querySelector(".cat").addEventListener("click", () => {
+    const cat = document.querySelector(".cat");
+
+    cat.innerHTML = "😺💖";
+
+    setTimeout(() => {
+        cat.innerHTML = "🐱🎀";
+    }, 1000);
+});
+
 </script>
 
 </body>
