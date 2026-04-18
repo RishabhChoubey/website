@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Billi 🐱🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🔥 LOCK SCREEN (NO MOBILE JUMP) */
+body {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    background: linear-gradient(270deg,#ff9a9e,#fad0c4,#ffd1ff,#ff9a9e);
+    background-size: 600% 600%;
+    animation: bgMove 25s linear infinite;
+}
+
+@keyframes bgMove {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Card */
+.card {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    padding: 30px 20px;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+
+    transform: translateZ(0);
+}
+
+/* Title */
+h1 {
+    font-size: clamp(28px, 6vw, 45px);
+    margin: 0;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 25px #ffeb3b; }
+}
+
+.name {
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Cake */
+.cake {
+    font-size: clamp(40px, 10vw, 60px);
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-10px); }
+}
+
+/* Cat */
+.cat {
+    font-size: clamp(60px, 15vw, 90px);
+    margin-top: 15px;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-12px); }
+}
+
+p {
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* 🎊 CONFETTI (NO VH USED) */
+.confetti {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(120%) rotate(360deg);
+    }
+}
+
+.paw {
+    position: fixed;
+    bottom: 25px;
+    font-size: 22px;
+    opacity: 0.8;
+    z-index: 5;
+
+    animation: walkX linear infinite;
+}
+
+/* Single animation (no conflict) */
+@keyframes walkX {
+    0%   { transform: translateX(-10vw) translateY(0); }
+    25%  { transform: translateX(25vw) translateY(-6px); }
+    50%  { transform: translateX(50vw) translateY(0); }
+    75%  { transform: translateX(75vw) translateY(-6px); }
+    100% { transform: translateX(110vw) translateY(0); }
+}
+
+/* Gift screen */
+.gift-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(270deg,#ff9a9e,#fad0c4,#ffd1ff);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 10;
+}
+
+.gift-box {
+    font-size: 80px;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+}
+
+/* CTA */
+.msg-cta {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.msg-box {
+    background: rgba(255,255,255,0.95);
+    color: #ff4081;
+    padding: 15px 25px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* 💬 POPUP (FULLY STABLE) */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 20px;
+
+    width: 80%;
+    max-width: 350px;
+    max-height: 80%;
+    overflow-y: auto;
+
+    text-align: center;
+    line-height: 1.6;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 22px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Gift -->
+<div id="giftScreen" class="gift-screen">
+    <div class="gift-box" onclick="openGift()">🎁</div>
+    <p>Click Me Billi🐱</p>
+</div>
+
+<!-- Card -->
+<div id="mainCard" class="card" style="display:none;">
+    <div class="cake">🎂</div>
+    <h1>Happy Birthday</h1>
+    <div class="name">Billi 🐱</div>
+    <p id="typingText"></p>
+    <div class="cat">🐱🎀</div>
+</div>
+
+<!-- CTA -->
+<div id="msgCTA" class="msg-cta" style="display:none">
+    <div class="msg-box" onclick="showMessage()">💌 Read Message</div>
+</div>
+
+<!-- Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeMessage()">×</span>
+        <p>
+            Hey Billi 🐱,<br><br>
+            You are honestly one of the most special people 💖  
+            Stay happy, keep smiling, and always be this adorable 😄  
+            <br><br>
+            — From someone who secretly smiles because of you 😉
+        </p>
+    </div>
+</div>
+
+<script>
+function openGift() {
+    document.getElementById("giftScreen").style.display = "none";
+    document.getElementById("mainCard").style.display = "block";
+
+    setTimeout(() => {
+        document.getElementById("msgCTA").style.display = "block";
+    }, 1200);
+
+    startTyping();
+}
+
+/* Typing */
+const message = "Wishing you a day full of treats, smiles, and lots of love… just like a spoiled little cat 😄 🥳";
+let index = 0;
+
+function startTyping() {
+    const el = document.getElementById("typingText");
+
+    function type() {
+        if (index < message.length) {
+            el.innerHTML += message.charAt(index);
+            index++;
+            setTimeout(type, 40);
+        }
+    }
+    type();
+}
+
+/* Popup */
+function showMessage() {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("msgCTA").style.display = "none";
+}
+
+function closeMessage() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("msgCTA").style.display = "block";
+}
+
+/* Confetti */
+for (let i = 0; i < 80; i++) {
+    let c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "%";
+    c.style.animationDuration = (3 + Math.random() * 3) + "s";
+    c.style.backgroundColor =
+        ["#ff0","#ff4081","#0ff","#0f0","#fff"][Math.floor(Math.random()*5)];
+    document.body.appendChild(c);
+}
+
+for (let i = 0; i < 5; i++) {
+    let paw = document.createElement("div");
+    paw.className = "paw";
+    paw.innerHTML = "🐾";
+
+    paw.style.left = "0";  // start inside screen
+    paw.style.bottom = (i % 2 === 0 ? 25 : 40) + "px"; // alternating steps
+    paw.style.animationDuration = (6 + i) + "s";
+    paw.style.animationDelay = i * 1 + "s";
+
+    document.body.appendChild(paw);
+}
+</script>
+
+</body>
+</html>
