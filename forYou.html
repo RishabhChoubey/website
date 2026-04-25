@@ -9,6 +9,7 @@
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    font-family: 'Poppins', sans-serif;
 }
 
 html, body {
@@ -571,12 +572,341 @@ backgound animation
     box-shadow: -40vmin 0 5.562364943307177vmin currentColor;
 }
 
+.lock-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+     position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #3E1E68;
+    overflow: hidden;
+     padding: 20px;
+}
+
+.lock-screen span {
+    width: 20vmin;
+    height: 20vmin;
+    border-radius: 20vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation: move;
+    animation-duration: 45;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+
+.lock-screen span:nth-child(0) {
+    color: #FFACAC;
+    top: 22%;
+    left: 1%;
+    animation-duration: 45s;
+    animation-delay: -13s;
+    transform-origin: -4vw -16vh;
+    box-shadow: -40vmin 0 5.527970464884462vmin currentColor;
+}
+.lock-screen span:nth-child(1) {
+    color: #E45A84;
+    top: 65%;
+    left: 14%;
+    animation-duration: 39s;
+    animation-delay: -13s;
+    transform-origin: -24vw 14vh;
+    box-shadow: 40vmin 0 5.441160894761047vmin currentColor;
+}
+.lock-screen span:nth-child(2) {
+    color: #FFACAC;
+    top: 26%;
+    left: 53%;
+    animation-duration: 24s;
+    animation-delay: -35s;
+    transform-origin: -13vw 22vh;
+    box-shadow: 40vmin 0 5.607424965450706vmin currentColor;
+}
+.lock-screen span:nth-child(3) {
+    color: #583C87;
+    top: 67%;
+    left: 57%;
+    animation-duration: 47s;
+    animation-delay: -25s;
+    transform-origin: -2vw -5vh;
+    box-shadow: -40vmin 0 5.044444339675337vmin currentColor;
+}
+.lock-screen span:nth-child(4) {
+    color: #FFACAC;
+    top: 53%;
+    left: 13%;
+    animation-duration: 10s;
+    animation-delay: -30s;
+    transform-origin: -8vw -1vh;
+    box-shadow: 40vmin 0 5.767509623905328vmin currentColor;
+}
+.lock-screen span:nth-child(5) {
+    color: #583C87;
+    top: 36%;
+    left: 93%;
+    animation-duration: 42s;
+    animation-delay: -35s;
+    transform-origin: 5vw 4vh;
+    box-shadow: 40vmin 0 5.4714246377110705vmin currentColor;
+}
+.lock-screen span:nth-child(6) {
+    color: #E45A84;
+    top: 73%;
+    left: 93%;
+    animation-duration: 39s;
+    animation-delay: -22s;
+    transform-origin: -2vw -4vh;
+    box-shadow: 40vmin 0 5.19515976383883vmin currentColor;
+}
+.lock-screen span:nth-child(7) {
+    color: #FFACAC;
+    top: 31%;
+    left: 33%;
+    animation-duration: 25s;
+    animation-delay: -30s;
+    transform-origin: -11vw 0vh;
+    box-shadow: 40vmin 0 5.215948105548207vmin currentColor;
+}
+.lock-screen span:nth-child(8) {
+    color: #E45A84;
+    top: 60%;
+    left: 1%;
+    animation-duration: 25s;
+    animation-delay: -12s;
+    transform-origin: -9vw -11vh;
+    box-shadow: -40vmin 0 5.214472443567714vmin currentColor;
+}
+.lock-screen span:nth-child(9) {
+    color: #E45A84;
+    top: 96%;
+    left: 15%;
+    animation-duration: 25s;
+    animation-delay: -33s;
+    transform-origin: -3vw 22vh;
+    box-shadow: -40vmin 0 5.848706160030203vmin currentColor;
+}
+.lock-screen span:nth-child(10) {
+    color: #E45A84;
+    top: 52%;
+    left: 69%;
+    animation-duration: 26s;
+    animation-delay: -38s;
+    transform-origin: 6vw 16vh;
+    box-shadow: 40vmin 0 5.871874652970368vmin currentColor;
+}
+.lock-screen span:nth-child(11) {
+    color: #E45A84;
+    top: 68%;
+    left: 97%;
+    animation-duration: 50s;
+    animation-delay: -26s;
+    transform-origin: 25vw 11vh;
+    box-shadow: 40vmin 0 5.69283486720534vmin currentColor;
+}
+.lock-screen span:nth-child(12) {
+    color: #E45A84;
+    top: 61%;
+    left: 7%;
+    animation-duration: 32s;
+    animation-delay: -11s;
+    transform-origin: 2vw -21vh;
+    box-shadow: 40vmin 0 5.943340491257628vmin currentColor;
+}
+.lock-screen span:nth-child(13) {
+    color: #FFACAC;
+    top: 74%;
+    left: 58%;
+    animation-duration: 38s;
+    animation-delay: -45s;
+    transform-origin: -20vw 3vh;
+    box-shadow: -40vmin 0 5.9610770339779755vmin currentColor;
+}
+.lock-screen span:nth-child(14) {
+    color: #583C87;
+    top: 73%;
+    left: 93%;
+    animation-duration: 27s;
+    animation-delay: -49s;
+    transform-origin: -9vw 2vh;
+    box-shadow: -40vmin 0 5.3327399580824vmin currentColor;
+}
+.lock-screen span:nth-child(15) {
+    color: #583C87;
+    top: 39%;
+    left: 70%;
+    animation-duration: 52s;
+    animation-delay: -25s;
+    transform-origin: -23vw -4vh;
+    box-shadow: 40vmin 0 5.331388496978709vmin currentColor;
+}
+.lock-screen span:nth-child(16) {
+    color: #FFACAC;
+    top: 97%;
+    left: 81%;
+    animation-duration: 9s;
+    animation-delay: -39s;
+    transform-origin: 12vw -1vh;
+    box-shadow: -40vmin 0 5.464405331578735vmin currentColor;
+}
+.lock-screen span:nth-child(17) {
+    color: #FFACAC;
+    top: 36%;
+    left: 43%;
+    animation-duration: 27s;
+    animation-delay: -31s;
+    transform-origin: 0vw 2vh;
+    box-shadow: -40vmin 0 5.276403625825578vmin currentColor;
+}
+.lock-screen span:nth-child(18) {
+    color: #E45A84;
+    top: 3%;
+    left: 18%;
+    animation-duration: 24s;
+    animation-delay: -3s;
+    transform-origin: 6vw -6vh;
+    box-shadow: 40vmin 0 5.33537574581751vmin currentColor;
+}
+.lock-screen span:nth-child(19) {
+    color: #583C87;
+    top: 8%;
+    left: 37%;
+    animation-duration: 13s;
+    animation-delay: -21s;
+    transform-origin: -18vw 13vh;
+    box-shadow: -40vmin 0 5.562364943307177vmin currentColor;
+}
+.lock-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 700px;
+}
+.lock-image {
+    width: 60%;
+    max-width: 280px;
+    border-radius: 20px;
+
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+@media (max-width: 600px) {
+    .lock-wrapper {
+        flex-direction: column;
+    }
+
+    .lock-image {
+        width: 100%;
+        max-width: 220px;
+    }
+}
+.lock-box {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 300px;
+}
+
+.lock-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    outline: none;
+}
+
+.lock-box button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    background: #ff4081;
+    color: white;
+    cursor: pointer;
+}
+
+#errorText {
+    color: #ffeb3b;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+/* shake animation */
+@keyframes shakeError {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+#giftScreen,
+#mainCard,
+#msgCTA {
+    display: none;
+}
 
 </style>
 </head>
 
 <body>
-     
+<div id="lockScreen" class="lock-screen">
+    <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+    
+  
+    <div class="lock-wrapper">
+
+        <!-- 👇 Her Image -->
+        <img 
+          src="https://raw.githubusercontent.com/RishabhChoubey/website/main/WhatsApp%20Image%202026-04-11%20at%2010.33.00.jpeg" 
+          class="lock-image"
+        />
+
+        <!-- 👇 Password box -->
+        <div class="lock-box">
+            <h2>🔐 Enter Secret</h2>
+            <input type="password" id="passwordInput" placeholder="Enter password" />
+            <button onclick="checkPassword()">Unlock 💖</button>
+            <p id="errorText"></p>
+        </div>
+
+    </div>
+</div>
 <div class="bg-blur"></div>
 <div class="bg-image"></div>
 <div class="bg-overlay"></div>
@@ -642,7 +972,30 @@ because honestly, it’s kind of impossible not to like you.<br><br>
 </div>
 
 <script>
+document.getElementById("passwordInput")
+.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") checkPassword();
+});
+function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    const error = document.getElementById("errorText");
+    const lock = document.getElementById("lockScreen");
 
+    const correctPassword = "billi"; // 🔑 change this
+
+    if (input.toLowerCase() === correctPassword) {
+        lock.style.display = "none";
+
+        // show app
+        document.getElementById("giftScreen").style.display = "flex";
+    } else {
+        error.innerText = "Wrong password 😒";
+        error.style.animation = "shakeError 0.3s";
+        error.innerText = "Hint: your nickname 😏";
+
+        setTimeout(() => error.style.animation = "", 300);
+    }
+}
 
 const tagTexts = [
     "Software Engineer 💻",
@@ -758,7 +1111,7 @@ document.addEventListener("click", () => {
     tapCount++;
 
     if (tapCount === 5) {
-        document.getElementById("msgCTA").style.display = "block";
+        // document.getElementById("msgCTA").style.display = "block";
 
         // 🎉 small reveal effect
         for (let i = 0; i < 10; i++) {
