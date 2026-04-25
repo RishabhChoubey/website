@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Happy Birthday Billi 🐱🎂</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style>
 * {
     box-sizing: border-box;
@@ -152,7 +152,7 @@ p {
     justify-content: center;
     align-items: center;
     color: white;
-    : 10;
+   z-index : 10;
 }
 
 
@@ -160,7 +160,7 @@ p {
     font-size: 80px;
     cursor: pointer;
     animation: bounce 1.5s infinite;
-     : 5; /* above tags */
+    z-index : 5; /* above tags */
     
     position: relative;
 }
@@ -208,7 +208,7 @@ p {
     display: none;
     position: fixed;
     inset: 0;
-    : 30;
+   z-index : 30;
     width: 100%;
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(6px);
@@ -299,7 +299,7 @@ p {
 .bg-image {
     position: fixed;
     inset: 0;
-    : -2;
+   z-index  : -2;
 
     background-image: url("https://raw.githubusercontent.com/RishabhChoubey/website/main/WhatsApp%20Image%202026-04-11%20at%2010.33.00.jpeg");
     background-size: contain; /* show full image */
@@ -315,7 +315,7 @@ p {
 .bg-blur {
     position: fixed;
     inset: 0;
-    : -3;
+   z-index : -3;
 
     background-image: url("https://raw.githubusercontent.com/RishabhChoubey/website/main/WhatsApp%20Image%202026-04-11%20at%2010.33.00.jpeg");
     background-size: cover;
@@ -327,7 +327,7 @@ p {
 .bg-overlay {
     position: fixed;
     inset: 0;
-    : -1;
+    z-index : -1;
 
     background: rgba(0,0,0,0.3);
 }
@@ -885,6 +885,207 @@ transition: transform 0.15s ease, box-shadow 0.15s ease;
     transform: scale(1.15);
     box-shadow: 0 0 10px #ff4081;
 }
+
+.cake-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.cake {
+    font-size: 80px;
+}
+
+.candles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: -20px;
+}
+
+.candle {
+    width: 10px;
+    height: 30px;
+    background: #fff;
+    border-radius: 2px;
+    position: relative;
+}
+
+.flame {
+    width: 10px;
+    height: 15px;
+    background: orange;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    left: 0;
+    animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.2); opacity: 0.7; }
+}
+
+.blow-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4081;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+}
+
+.hidden-text {
+    opacity: 0;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+.show-text {
+    opacity: 1;
+    transform: scale(1.1);
+        font-size: larger;
+}
+
+/* 🎂 Cake Container */
+.cake-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Cake base */
+.cake-css {
+    position: relative;
+    width: 220px;
+    height: 200px;
+    margin: auto;
+}
+
+/* Plate */
+.plate {
+    width: 240px;
+    height: 20px;
+    background: #eee;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+}
+
+/* Cake layers */
+.cake-layer {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    left: 10px;
+    border-radius: 10px;
+}
+
+.layer-bottom {
+    bottom: 20px;
+    background: #ff9aa2;
+}
+
+.layer-middle {
+    bottom: 60px;
+    background: #ffb7b2;
+}
+
+.layer-top {
+    bottom: 100px;
+    background: #ffdac1;
+}
+
+/* Icing */
+.icing {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    background: #fff;
+    border-radius: 10px;
+    bottom: 100px;
+    left: 10px;
+}
+
+/* Drips */
+.drip {
+    position: absolute;
+    width: 10px;
+    height: 25px;
+    background: white;
+    border-radius: 50%;
+}
+
+.drip1 { left: 40px; bottom: 90px; }
+.drip2 { left: 90px; bottom: 85px; }
+.drip3 { left: 140px; bottom: 90px; }
+
+/* Candle */
+.candle {
+    width: 10px;
+    height: 40px;
+    background:#ffffff;
+    position: absolute;
+    bottom: 120px;
+    left: 105px;
+    border-radius: 2px;
+}
+
+/* Flame */
+.flame {
+    width: 12px;
+    height: 18px;
+    background: orange;
+    border-radius: 50%;
+    position: absolute;
+    top: -18px;
+    left: -1px;
+    animation: flicker 0.3s infinite alternate;
+}
+
+/* Flame animation */
+@keyframes flicker {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.2); opacity: 0.6; }
+}
+
+/* 📱 Mobile responsive */
+@media (max-width: 480px) {
+    .cake-css {
+        transform: scale(0.85);
+    }
+}
+.cursor{
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 5s steps(50) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
+
+
+
+
 </style>
 </head>
 
@@ -963,11 +1164,41 @@ transition: transform 0.15s ease, box-shadow 0.15s ease;
    <span></span>
    <span></span>
    <span></span>
+
     
-    </div><div class="gift-box" onclick="openGift()">🎁</div>
-    <p style="z-index:1">Click Me Billi🐱</p>
+    </div>
+    
+<div class="cake-container" id="cake-container">
+    
+    <div class="cake-css">
+        <div class="plate"></div>
+
+        <div class="cake-layer layer-bottom"></div>
+        <div class="cake-layer layer-middle"></div>
+        <div class="cake-layer layer-top"></div>
+
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip2"></div>
+        <div class="drip drip3"></div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        
+    </div>
+
+    <button class="blow-btn" onclick="blowCandles()">💨 Blow</button>
+
+
 </div>
 
+<h2 id="bdayText" class="hidden-text  cursor typewriter-animation">🎉 Happy Birthday Billi 🐱 🎂</h2>
+    <div class="gift" style="display: none;" id = "gift"><div class="gift-box" onclick="openGift()">🎁</div>
+    <p style="z-index:1; position: relative;" onclick="openGift()">Click Me Billi🐱</p>
+</div>
+
+</div>
 
 <!-- Card -->
 <div id="mainCard" class="card" style="display:none;">
@@ -1007,6 +1238,24 @@ I’m not really good with words… but I hope you understand this much.<br><br>
 </div>
 
 <script>
+   function blowCandles() {
+    const flames = document.querySelectorAll(".flame");
+
+    flames.forEach(f => {
+        f.style.animation = "none";
+        f.style.opacity = "0";
+        f.style.display = "none"; // 🔥 force remove
+    });
+
+    const text = document.getElementById("bdayText");
+    const gift = document.getElementById("gift")
+    const cake = document.getElementById("cake-container")
+    setTimeout(() => {
+        text.classList.add("show-text");
+        gift.style.display= "block";
+        cake.style.display = "none";
+    }, 400);
+}
 
 const pins = document.querySelectorAll(".pin");
 
@@ -1123,9 +1372,9 @@ function openGift() {
     document.getElementById("giftScreen").style.display = "none";
     document.getElementById("mainCard").style.display = "block";
 
-    setTimeout(() => {
+  
         document.getElementById("msgCTA").style.display = "block";
-    }, 1000);
+ 
 
     startTyping();
 }
