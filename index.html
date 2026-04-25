@@ -862,6 +862,29 @@ backgound animation
     display: none;
 }
 
+
+.pin-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pin {
+    width: 45px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pin.filled {
+    transform: scale(1.15);
+    box-shadow: 0 0 10px #ff4081;
+}
 </style>
 </head>
 
@@ -900,8 +923,15 @@ backgound animation
         <!-- 👇 Password box -->
         <div class="lock-box">
             <h2>🔐 Enter Secret</h2>
-            <input type="password" id="passwordInput" placeholder="Enter password" />
-            <button onclick="checkPassword()">Unlock 💖</button>
+            <input type="password" id="passwordInput" placeholder="Enter password" style="display:none;" />
+              <div class="pin-container">
+        <input type="text" maxlength="1" class="pin" />
+        <input type="text" maxlength="1" class="pin" />
+        <input type="text" maxlength="1" class="pin" />
+        <input type="text" maxlength="1" class="pin" />
+        <input type="text" maxlength="1" class="pin" />
+    </div>
+            <button onclick="checkPassword1()">Unlock 💖</button>
             <p id="errorText"></p>
         </div>
 
@@ -958,24 +988,83 @@ backgound animation
     <div class="popup-content">
         <span class="close" onclick="closeMessage()">×</span>
        <p>
-            Hey Billi 🐱, <br><br>
+           I don’t know how you do it, <br><br>
+           but you somehow manage to be cute, annoying, and special all at once 😄💖<br><br>
 
-I don’t know how you do it, <br><br> 
-but you somehow manage to be cute, annoying, and special all at once 😄💖<br><br>
+Yeah… we fight sometimes, and I annoy you more than I should 😅<br><br>
 
-Stay exactly like this…  <br><br>
-because honestly, it’s kind of impossible not to like you.<br><br>
+But even in all that, it’s kind of impossible not to like you.<br><br>
 
-— Someone who definitely doesn’t smile because of you… obviously 😉
-        </p>
+So stay exactly like this…<br><br>
+
+And even if we argue, just know this —<br><br>
+I’m still here, and I still choose you every time 🙂<br><br>
+
+I’m not really good with words… but I hope you understand this much.<br><br>
+
+— Someone who definitely doesn’t smile because of you… obviously 😉 </p>
     </div>
 </div>
 
 <script>
-document.getElementById("passwordInput")
-.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") checkPassword();
+
+const pins = document.querySelectorAll(".pin");
+
+
+pins.forEach((input, index) => {
+    input.addEventListener("input", () => {
+         input.value = input.value.toUpperCase();
+
+    if (input.value) {
+        input.classList.add("filled");
+    } else {
+        input.classList.remove("filled");
+    }
 });
+
+
+
+    input.addEventListener("input", () => {
+        if (input.value && index < pins.length - 1) {
+            pins[index + 1].focus();
+        }
+    });
+
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !input.value && index > 0) {
+            pins[index - 1].focus();
+        }
+    });
+});
+
+
+function checkPassword1() {
+   
+    const error = document.getElementById("errorText");
+    const lock = document.getElementById("lockScreen");
+
+    const correctPassword = "billi"; // 🔑 change this
+     let input = "";
+    pins.forEach(p => input += p.value);
+
+    if (input.toLowerCase() === correctPassword) {
+        lock.style.display = "none";
+
+        // show app
+        document.getElementById("giftScreen").style.display = "flex";
+    } else {
+        error.innerText = "Wrong password 😒";
+        error.style.animation = "shakeError 0.3s";
+        error.innerText = "Hint: your nickname 😏";
+
+        setTimeout(() => error.style.animation = "", 300);
+    }
+}
+
+
+
+
+
 function checkPassword() {
     const input = document.getElementById("passwordInput").value;
     const error = document.getElementById("errorText");
